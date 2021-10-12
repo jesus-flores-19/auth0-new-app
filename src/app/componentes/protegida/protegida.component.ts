@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '@auth0/auth0-angular';
 
 @Component({
   selector: 'app-protegida',
@@ -8,7 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProtegidaComponent implements OnInit {
 
-  constructor() { }
+  UsuarioInfo = new Promise<Object>((resolve, reject) =>{
+    this.auth.user$.subscribe((data: any) => {
+      console.log(data);
+      resolve(data)
+    })
+  });
+
+  constructor(public auth: AuthService) { 
+    this.UsuarioInfo
+  }
 
   ngOnInit(): void {
   }

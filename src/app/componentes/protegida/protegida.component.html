@@ -1,1 +1,17 @@
-<p>protegida works!</p>
+<div class="row justify-content-center" style="margin-top: 100px;">
+    <div class="col-8 bg-dark rounded shadow pb-2" *ngIf="auth.user$ | async as user">
+        <div class="row justify-content-center">
+            <div class="col-3">
+                <div class="row">
+                    <img class="img-fluid rounded-circle" style="margin-top: -4vw" [src]="user.picture">
+                </div>
+
+            </div>
+            <hr>
+            <div class="col text-white text-center">
+                <h1 class="display-5">{{user.name}}</h1><br>
+                <p class="text-muted">{{user.email}}</p>
+            </div>
+        </div>
+    </div>
+</div>
